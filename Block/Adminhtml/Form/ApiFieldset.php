@@ -70,7 +70,7 @@ class ApiFieldset extends Fieldset
      * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return bool
      */
-    protected function _isCollapseState($element): bool
+    protected function _isCollapseState($element)
     {
         return !$this->config->isFullyConfigured();
     }
@@ -82,7 +82,7 @@ class ApiFieldset extends Fieldset
      * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
      */
-    protected function _getHeaderCommentHtml($element): string
+    protected function _getHeaderCommentHtml($element)
     {
         $comment = $element->getComment();
         if (!$this->config->isFullyConfigured()) {

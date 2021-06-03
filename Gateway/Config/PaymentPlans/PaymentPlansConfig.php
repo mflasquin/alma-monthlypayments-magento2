@@ -113,7 +113,7 @@ class PaymentPlansConfig implements PaymentPlansConfigInterface
     /**
      * @inheritDoc
      */
-    public function getPlans(): array
+    public function getPlans()
     {
         return array_map(function ($planData) {
             return $this->planConfigFactory->create(["data" => $planData]);
@@ -123,7 +123,7 @@ class PaymentPlansConfig implements PaymentPlansConfigInterface
     /**
      * @inheritDoc
      */
-    public function getEnabledPlans(): array
+    public function getEnabledPlans()
     {
         return array_filter($this->getPlans(), function ($planConfig) {
             return $planConfig->isAllowed() && $planConfig->isEnabled();
@@ -133,7 +133,7 @@ class PaymentPlansConfig implements PaymentPlansConfigInterface
     /**
      * @inheritDoc
      */
-    public function toJson(): string
+    public function toJson()
     {
         return $this->serializer->serialize($this->data);
     }

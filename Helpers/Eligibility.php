@@ -105,7 +105,7 @@ class Eligibility
      * @throws NoSuchEntityException
      * @throws RequestError
      */
-    public function getPlansEligibility(): array
+    public function getPlansEligibility()
     {
         if (!$this->alma || !$this->checkItemsTypes()) {
             return [];
@@ -248,7 +248,7 @@ class Eligibility
     /**
      * @return PaymentPlanEligibility[]
      */
-    public function getEligiblePlans(): array
+    public function getEligiblePlans()
     {
         try {
             return array_filter($this->getPlansEligibility(), function ($planEligibility) {

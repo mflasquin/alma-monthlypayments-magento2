@@ -50,7 +50,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @return string[]
      */
-    public static function transientKeys(): array
+    public static function transientKeys()
     {
         return [
             self::TRANSIENT_KEY_MIN_ALLOWED_AMOUNT,
@@ -63,7 +63,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public static function keyForFeePlan(FeePlan $plan): string
+    public static function keyForFeePlan(FeePlan $plan)
     {
         return self::key(
             $plan->kind,
@@ -76,7 +76,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public static function defaultConfigForFeePlan(FeePlan $plan): array
+    public static function defaultConfigForFeePlan(FeePlan $plan)
     {
         return [
             'kind' => $plan->kind,
@@ -117,7 +117,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
         int $installmentsCount,
         int $deferredDays,
         int $deferredMonths
-    ): string
+    )
     {
         return implode(':', [$planKind, $installmentsCount, $deferredDays, $deferredMonths]);
     }
@@ -125,7 +125,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function toArray(): array
+    public function toArray()
     {
         return $this->data;
     }
@@ -133,7 +133,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function planKey(): string
+    public function planKey():
     {
         return self::key($this->kind(), $this->installmentsCount(), $this->deferredDays(), $this->deferredMonths());
     }
@@ -141,7 +141,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function getPaymentData(): array
+    public function getPaymentData():
     {
         if (!$this->isAllowed() || !$this->isEnabled()) {
             return [];
@@ -162,7 +162,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function kind(): string
+    public function kind()
     {
         return $this->data['kind'];
     }
@@ -170,7 +170,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function isAllowed(): bool
+    public function isAllowed()
     {
         return $this->data['allowed'];
     }
@@ -178,7 +178,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function isEnabled(): bool
+    public function isEnabled()
     {
         return $this->data['enabled'];
     }
@@ -186,7 +186,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function installmentsCount(): int
+    public function installmentsCount()
     {
         return $this->data['installmentsCount'];
     }
@@ -194,7 +194,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function isDeferred(): bool
+    public function isDeferred()
     {
         return $this->deferredDays() > 0 || $this->deferredMonths() > 0;
     }
@@ -214,7 +214,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function deferredDays(): int
+    public function deferredDays()
     {
         return intval($this->data['deferredDays']);
     }
@@ -222,7 +222,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function deferredMonths(): int
+    public function deferredMonths()
     {
         return intval($this->data['deferredMonths']);
     }
@@ -230,7 +230,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function deferredDurationInDays(): int
+    public function deferredDurationInDays()
     {
         return $this->deferredMonths() * 30 + $this->deferredDays();
     }
@@ -238,7 +238,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function deferredDuration(): int
+    public function deferredDuration()
     {
         return $this->deferredMonths() ?: $this->deferredDays();
     }
@@ -246,7 +246,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function minimumAmount(): int
+    public function minimumAmount()
     {
         return $this->data['minAmount'];
     }
@@ -262,7 +262,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function minimumAllowedAmount(): int
+    public function minimumAllowedAmount()
     {
         return $this->data['minAllowedAmount'];
     }
@@ -270,7 +270,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function maximumAmount(): int
+    public function maximumAmount()
     {
         return $this->data['maxAmount'];
     }
@@ -286,7 +286,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function maximumAllowedAmount(): int
+    public function maximumAllowedAmount()
     {
         return $this->data['maxAllowedAmount'];
     }
@@ -294,7 +294,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function variableMerchantFees(): int
+    public function variableMerchantFees()
     {
         return $this->data['merchantFees']['variable'];
     }
@@ -302,7 +302,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function fixedMerchantFees(): int
+    public function fixedMerchantFees()
     {
         return $this->data['merchantFees']['fixed'];
     }
@@ -310,7 +310,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function variableCustomerFees(): int
+    public function variableCustomerFees()
     {
         return $this->data['customerFees']['variable'];
     }
@@ -318,7 +318,7 @@ class PaymentPlanConfig implements PaymentPlanConfigInterface
     /**
      * @inheritDoc
      */
-    public function fixedCustomerFees(): int
+    public function fixedCustomerFees()
     {
         return $this->data['customerFees']['fixed'];
     }

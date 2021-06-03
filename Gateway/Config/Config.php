@@ -72,8 +72,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         PaymentPlansConfigInterfaceFactory $plansConfigFactory,
         $methodCode = null,
         $pathPattern = self::DEFAULT_PATH_PATTERN
-    )
-    {
+    ) {
         parent::__construct($scopeConfig, $methodCode, $pathPattern);
 
         $this->methodCode = $methodCode;
@@ -101,7 +100,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      * @param string $field
      * @return string
      */
-    public function getFieldPath(string $field): string
+    public function getFieldPath(string $field)
     {
         return sprintf($this->pathPattern, $this->methodCode, $field);
     }
@@ -126,7 +125,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return int
      */
-    public function getSortOrder(): int
+    public function getSortOrder()
     {
         return (int)$this->get(self::CONFIG_SORT_ORDER);
     }
@@ -134,7 +133,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
-    public function canLog(): bool
+    public function canLog()
     {
         return (bool)(int)$this->get(self::CONFIG_DEBUG, false);
     }
@@ -184,7 +183,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
-    public function needsAPIKeys(): bool
+    public function needsAPIKeys()
     {
         return empty(trim($this->getLiveKey())) || empty(trim($this->getTestKey()));
     }
@@ -208,7 +207,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
-    public function showEligibilityMessage(): bool
+    public function showEligibilityMessage()
     {
         return (bool)(int)$this->get(self::CONFIG_SHOW_ELIGIBILITY_MESSAGE);
     }
@@ -248,7 +247,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
-    public function isFullyConfigured(): bool
+    public function isFullyConfigured()
     {
         return !$this->needsAPIKeys() && (bool)(int)$this->get(self::CONFIG_FULLY_CONFIGURED, false);
     }
@@ -288,7 +287,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return PaymentPlansConfigInterface
      */
-    public function getPaymentPlansConfig(): PaymentPlansConfigInterface
+    public function getPaymentPlansConfig()
     {
         $data = $this->get(self::CONFIG_PAYMENT_PLANS, []);
 

@@ -52,17 +52,17 @@ interface PaymentPlansConfigInterface
      *
      * @return PaymentPlanConfigInterface[]
      */
-    public function getPlans(): array;
+    public function getPlans();
 
     /**
      * Get plans that are allowed & enabled by the merchant
      *
      * @return PaymentPlanConfigInterface[]
      */
-    public function getEnabledPlans(): array;
+    public function getEnabledPlans();
 
     /**
      * Get a JSON representation of the plans configuration
      */
-    public function toJson(): string;
+    public function toJson();
 }

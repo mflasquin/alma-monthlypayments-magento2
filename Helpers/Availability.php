@@ -112,12 +112,12 @@ class Availability
     }
 
     /**
-     * @param string | null $mode
-     * @param string | null $apiKey
-     * @param Merchant $merchant
+     * @param null $mode
+     * @param null $apiKey
+     * @param false $merchant
      * @return bool
      */
-    public function canConnectToAlma($mode = null, $apiKey = null, &$merchant = false): bool
+    public function canConnectToAlma($mode = null, $apiKey = null, &$merchant = false)
     {
         if ($mode) {
             $modes = [$mode];
@@ -153,7 +153,7 @@ class Availability
             try {
                 $merchant = $alma->merchants->me();
             } catch (RequestError $e) {
-                if ($e->response && $e->response->responseCode === 401) {
+                if ($e->getResponse() && $e->getResponse()->responseCode === 401) {
                     return false;
                 } else {
                     $this->logger->error("Error while connecting to Alma API: {$e->getMessage()}");

@@ -69,7 +69,7 @@ class SecondaryFieldset extends Fieldset
      * @param AbstractElement $element
      * @return string
      */
-    public function render(AbstractElement $element): string
+    public function render(AbstractElement $element)
     {
         if (!$this->config->isFullyConfigured()) {
             return "";

@@ -73,7 +73,7 @@ class Quote
      * @return array
      * @throws \Magento\Framework\Exception\InputException
      */
-    public function paymentDataFromQuote(MagentoQuote $quote, $installmentsCounts = 3): array
+    public function paymentDataFromQuote(MagentoQuote $quote, $installmentsCounts = 3)
     {
         $shippingAddress = new AddressAdapter($quote->getShippingAddress());
         $billingAddress = new AddressAdapter($quote->getBillingAddress());

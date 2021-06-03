@@ -11,59 +11,59 @@ interface PaymentPlanConfigInterface
     /**
      * @return array
      */
-    public static function transientKeys(): array;
+    public static function transientKeys();
 
     /**
      * @param FeePlan $plan
      * @return string
      */
-    public static function keyForFeePlan(FeePlan $plan): string;
+    public static function keyForFeePlan(FeePlan $plan);
 
     /**
      * @param FeePlan $plan
      * @return array
      */
-    public static function defaultConfigForFeePlan(FeePlan $plan): array;
+    public static function defaultConfigForFeePlan(FeePlan $plan);
 
     /**
      * @return array
      */
-    public function toArray(): array;
+    public function toArray();
 
     /**
      * @return string
      */
-    public function planKey(): string;
+    public function planKey();
 
     /**
      * @return array
      */
-    public function getPaymentData(): array;
+    public function getPaymentData();
 
     /**
      * @return string
      */
-    public function kind(): string;
+    public function kind();
 
     /**
      * @return bool
      */
-    public function isAllowed(): bool;
+    public function isAllowed();
 
     /**
      * @return bool
      */
-    public function isEnabled(): bool;
+    public function isEnabled();
 
     /**
      * @return int
      */
-    public function installmentsCount(): int;
+    public function installmentsCount();
 
     /**
      * @return bool
      */
-    public function isDeferred(): bool;
+    public function isDeferred();
 
     /**
      * @return string|null
@@ -73,28 +73,28 @@ interface PaymentPlanConfigInterface
     /**
      * @return int
      */
-    public function deferredDays(): int;
+    public function deferredDays();
 
     /**
      * @return int
      */
-    public function deferredMonths(): int;
+    public function deferredMonths();
 
     /**
      * Returns deferred duration in days – approximate value (invariably using 30 days for 1 month) but it's OK as it's
      * mainly being used for sorting purposes.
      */
-    public function deferredDurationInDays(): int;
+    public function deferredDurationInDays();
 
     /**
      * @return int
      */
-    public function deferredDuration(): int;
+    public function deferredDuration();
 
     /**
      * @return int
      */
-    public function minimumAmount(): int;
+    public function minimumAmount();
 
     /**
      * @param int $amount
@@ -105,12 +105,12 @@ interface PaymentPlanConfigInterface
     /**
      * @return int
      */
-    public function minimumAllowedAmount(): int;
+    public function minimumAllowedAmount();
 
     /**
      * @return int
      */
-    public function maximumAmount(): int;
+    public function maximumAmount();
 
     /**
      * @param int $amount
@@ -121,27 +121,27 @@ interface PaymentPlanConfigInterface
     /**
      * @return int
      */
-    public function maximumAllowedAmount(): int;
+    public function maximumAllowedAmount();
 
     /**
      * @return int
      */
-    public function variableMerchantFees(): int;
+    public function variableMerchantFees();
 
     /**
      * @return int
      */
-    public function fixedMerchantFees(): int;
+    public function fixedMerchantFees();
 
     /**
      * @return int
      */
-    public function variableCustomerFees(): int;
+    public function variableCustomerFees();
 
     /**
      * @return int
      */
-    public function fixedCustomerFees(): int;
+    public function fixedCustomerFees();
 
     /**
      * @return string|null

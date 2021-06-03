@@ -50,7 +50,7 @@ class Logger extends Monolog
      * @param array $handlers
      * @param array $processors
      */
-    public function __construct(Config $config, DirectoryList $directoryList, string $name, $handlers = [], $processors = [])
+    public function __construct(Config $config, DirectoryList $directoryList, $name, $handlers = [], $processors = [])
     {
         $this->config = $config;
         $this->directoryList = $directoryList;
@@ -70,7 +70,7 @@ class Logger extends Monolog
      * @param array $context
      * @return bool
      */
-    public function addRecord($level, $message, array $context = []): bool
+    public function addRecord($level, $message, array $context = [])
     {
         if (!$this->config->canLog()) {
             return true;

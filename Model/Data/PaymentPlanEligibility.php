@@ -52,7 +52,7 @@ class PaymentPlanEligibility
     /**
      * @return Eligibility
      */
-    public function getEligibility(): Eligibility
+    public function getEligibility()
     {
         return $this->eligibility;
     }
@@ -60,7 +60,7 @@ class PaymentPlanEligibility
     /**
      * @return PaymentPlanConfig
      */
-    public function getPlanConfig(): PaymentPlanConfig
+    public function getPlanConfig()
     {
         return $this->planConfig;
     }
