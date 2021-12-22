@@ -1,18 +1,13 @@
-FROM quay.io/alexcheng1982/apache2-php7:7.3.12
-
-LABEL maintainer="alexcheng1982@gmail.com"
-LABEL php_version="7.3.12"
-LABEL magento_version=2.3.6
-LABEL description="Magento 2.3.6 with PHP 7.3.12"
+FROM php:7.4-apache
 
 ENV MAGENTO_INSTALL_DIR=/var/www/html
 
-#COPY --from=composer /usr/bin/composer /usr/bin/composer
-RUN curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer \
-    && composer self-update 1.10.19
-    # Composer 1 required for following dependencies =>
-    # TODO: describe `composer create-project` from magento repo broken with composer v2 here
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+#RUN curl -sS https://getcomposer.org/installer | php \
+#    && mv composer.phar /usr/local/bin/composer
+#    # && composer self-update 1.10.19
+#    # Composer 1 required for following dependencies =>
+#    # TODO: describe `composer create-project` from magento repo broken with composer v2 here
 
 # Retrieve this auth.json from 1password vault or build it with your own magento developer credentials
 # Usefull into composer create-project context
@@ -46,6 +41,8 @@ RUN chmod +x /usr/local/bin/mage-fix-perms
 RUN chmod +x /usr/local/bin/mage-fixtures
 RUN chmod +x /usr/local/bin/mage-configure
 
+VOLUME $MAGENTO_INSTALL_DIR
+
 RUN /usr/local/bin/mage-php-requirements
 RUN /usr/local/bin/mage-init
 
@@ -56,10 +53,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR $MAGENTO_INSTALL_DIR
 
 # Add cron job
-ADD crontab /etc/cron.d/magento2-cron
-RUN chmod 0644 /etc/cron.d/magento2-cron
+#ADD crontab /etc/cron.d/magento2-cron
+#RUN chmod 0644 /etc/cron.d/magento2-cron
 #    && crontab -u www-data /etc/cron.d/magento2-cron
 
-VOLUME $MAGENTO_INSTALL_DIR
-
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+#ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
